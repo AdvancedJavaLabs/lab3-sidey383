@@ -5,7 +5,6 @@ import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.itmo.lab3.Application;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -22,11 +21,11 @@ public class RevenueRowMapper extends Mapper<LongWritable, Text, Text, DoubleWri
     private int expectedColumnCount;
 
     @Override
-    protected void setup(Context context) throws IOException, InterruptedException {
+    protected void setup(Context context) {
         Configuration conf = context.getConfiguration();
-        categoryIndex = conf.getInt(Application.CATEGORY, 2);
-        priceIndex = conf.getInt(Application.PRICE, 3);
-        quantityIndex = conf.getInt(Application.QUANTITY, 4);
+        categoryIndex = conf.getInt("CATEGORY", 2);
+        priceIndex = conf.getInt("PRICE", 3);
+        quantityIndex = conf.getInt("QUANTITY", 4);
         csvDelimer = conf.get("CSV_DELIMITER", ",");
         expectedColumnCount = Math.max(categoryIndex, Math.max(priceIndex, quantityIndex)) + 1;
     }
