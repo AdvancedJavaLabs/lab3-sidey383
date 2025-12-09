@@ -3,12 +3,11 @@ plugins {
 }
 
 group = "org.itmo"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
+    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_1_8
 }
 
 repositories {
@@ -22,4 +21,8 @@ dependencies {
 
     compileOnly("org.projectlombok:lombok:1.18.42")
     annotationProcessor("org.projectlombok:lombok:1.18.42")
+}
+
+tasks.withType<Jar> {
+    archiveBaseName.set("app")
 }

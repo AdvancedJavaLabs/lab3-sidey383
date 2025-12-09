@@ -1,1 +1,1 @@
-rootProject.name = "lab2-sidey383"
+rootProject.name = "lab3-sidey383"
